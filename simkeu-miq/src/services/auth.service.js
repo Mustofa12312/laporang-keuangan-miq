@@ -24,7 +24,7 @@ export const login = async ({ username, password }) => {
     return { user, token }
   }
 
-  const res = await api.post('?action=login', { username, password })
+  const res = await api.post('', { username, password }, { params: { action: 'login' } })
   saveSession(res.user, res.token)
   return res
 }
