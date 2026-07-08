@@ -113,7 +113,7 @@ export default function DashboardPage() {
         <div>
           <p className="text-xs text-slate-400 dark:text-slate-500">{today}</p>
           <h1 className="text-xl font-bold text-slate-900 dark:text-white mt-0.5">
-            Halo, {user?.nama?.split(' ')[0]} 👋
+            Halo, {user?.nama} 👋
           </h1>
           <p className="text-sm text-slate-500 dark:text-slate-400">{user?.jabatan}</p>
         </div>
