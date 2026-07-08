@@ -42,8 +42,12 @@ const CATEGORY_SHEET = {
 }
 
 // ===== HELPER =====
-const ss  = () => SpreadsheetApp.openById(SPREADSHEET_ID)
-const sh  = (name) => ss().getSheetByName(name)
+let _ssCache = null;
+function getSS() {
+  if (!_ssCache) _ssCache = SpreadsheetApp.openById(SPREADSHEET_ID);
+  return _ssCache;
+}
+const sh  = (name) => getSS().getSheetByName(name)
 const ok  = (data, msg = 'Success')  => ContentService.createTextOutput(JSON.stringify({ success: true,  message: msg, data })).setMimeType(ContentService.MimeType.JSON)
 const err = (msg = 'Error')          => ContentService.createTextOutput(JSON.stringify({ success: false, message: msg })).setMimeType(ContentService.MimeType.JSON)
 

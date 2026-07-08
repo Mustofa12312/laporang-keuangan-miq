@@ -21,6 +21,7 @@ export const formatRupiahShort = (amount) => {
 export const formatDate = (dateStr, options = {}) => {
   if (!dateStr) return '-'
   const d = new Date(dateStr)
+  if (isNaN(d.getTime())) return String(dateStr)
   const defaults = { day: 'numeric', month: 'long', year: 'numeric' }
   return d.toLocaleDateString('id-ID', { ...defaults, ...options })
 }
@@ -31,6 +32,7 @@ export const formatDateShort = (dateStr) =>
 export const formatDateTime = (dateStr) => {
   if (!dateStr) return '-'
   const d = new Date(dateStr)
+  if (isNaN(d.getTime())) return String(dateStr)
   return d.toLocaleString('id-ID', {
     day: '2-digit', month: 'short', year: 'numeric',
     hour: '2-digit', minute: '2-digit',
